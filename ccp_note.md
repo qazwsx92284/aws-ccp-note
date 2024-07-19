@@ -41,3 +41,58 @@
 - Dedicated instances
 - EC2 Capacity Reservations
 
+# EC2 Storage
+- EBS (Elastic Block Store) : persist data, one instance at a time, single AZ, can move with snapshot
+     - EBS snapshots: backup, copy cross AZ/region
+       - EBS snapshot archive
+       - Recycle bin for EBS snapshots
+- EFS (Elastic File System) : NFS(network file system), multiple EC2, mLinux EC2 multi AZ
+   - EFS-IA (EFS Infrequent Access): automaticaaly move your files to EFS-IA, enable with a Lifecycle policy
+- EC2 Instance Store: physical drives, high-performance hardware disk, lose their storage if EC2 stopped (ephemeral)
+
+
+# AMI (amazon machine image)
+- customization of ec2
+- built for specific region, can be copied across regions
+- public(aws provided) / your own / AWS marketplace ami
+
+# EC2 image builder
+- automate the creation, maintain, validate and test EC2 AMIs
+- can schedule 
+- free, pay for underlying resources
+
+# Scalability & High Availability
+- Scalability: system can handle greater loads by adapting
+   - vertical scalability: upgrade size. ex. micro -> large. scale up/down
+   - horizontal scalability(=elasticity): increase num of system. ex. 2 -> 4. scale out/in
+- high availability: to survive a data center loss. run app in at least 2 AZ
+
+# ELB
+- managed load balancer: aws do upgrade, maintainance, gurantee system working, few configs
+- types:
+   1. Application Load Balancer: HTTP/HTTPS, static DNS(URL), layer 7
+   2. Network load balancer: ultra high performance, Static IP thru Elastic IP, TCP/UDP, layer 4
+   3. Gateway load balancer: Firewalls, intrusion dectection, layer 3
+
+# ASG
+- scale in/out, automatically register new instance to LB, replace unhealthy instances, cost savings(run at optimal capacity)
+- Types:
+   1. manual scaling
+   2. dynamic scaling
+      - simple/step scaling
+      - target tracking scaling
+      - scheduled scaling: anticipate based on **known usage pattern** pattern.
+      - predictive scaling: use machine lerning to predict future traffic
+```
+diagram
+WEB Traffic -> LB -> (EC2 x 10 ) ASG
+LB gets traffic, it handle the traffic route it to specific instance. ASG increase/decrese num of instances depending on traffic amount
+```
+
+
+
+
+
+
+
+
