@@ -31,4 +31,13 @@
 - like firewall
 - regulate ports, ip ranges: ipv4 and ipv6, inbound/outbound network
 
+# EC2 Pricing
+- On demand: highest cost, predictable pricing, pay by second, no upfront payment, short term, un-interrupted workloads(can't predict how the app will behave)
+- Reserved instance: 1 year, 3 years. No/partial/all upfront. steady-state usage (ex. DB). buy/sell in Reserved Instance Marketplace
+- Convertiable reseervced instance
+- EC2 Savings plan
+- EC2 spot instances: most cost efficient, may lose at any point of time if your max price is less than the current spot price(like bid/auction), useful for workloads resilient to failure ex. batch jobs, data analysis, image processing, distributed workload, flexieble start and end time
+- Dedicated hosts
+- Dedicated instances
+- EC2 Capacity Reservations
 
