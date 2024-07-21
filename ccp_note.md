@@ -89,7 +89,35 @@ WEB Traffic -> LB -> (EC2 x 10 ) ASG
 LB gets traffic, it handle the traffic route it to specific instance. ASG increase/decrese num of instances depending on traffic amount
 ```
 
+# S3 
+- Infinitely scaling storage
+- use case
+   1. Backup and **storage**
+   2. disaster recovery
+   3. archive
+   4. hybrid cloud storage
+   5. app **hosting**
+   6. media hosting
+   7. **data lakes & big data analytics
+   8. software delivery
+   9. **static website**
 
+# S3 buckets
+- store objects(files) in buckets(directories)
+- must have globally unique name across all regions and all accounts
+- defined at region level
+
+## S3 objects
+- files
+- have a key which is the full path
+- key = prefix + object name
+
+## S3 security
+1. user based: IAM policies
+2. resource based:
+   - bucket policies
+   - object/bucket access control list(ACL)
+3. encryption
 
 
 
