@@ -437,7 +437,19 @@ codeCommit > codeBuild > CodeDeploy > Elastic Beanstalk
 - leverage AWS internal (private ) network
 - 2 anycast IP are created and traffic is sent thru edge locations
 
+---
+AWS SNS vs SQS key feature differences
+There are some key distinctions between SNS and SQS:
 
+SNS supports A2A and A2P communication, while SQS supports only A2A communication.
+
+SNS is a pub/sub system, while SQS is a queueing system. You'd typically use SNS to send the same message to multiple consumers via topics. In comparison, in most scenarios, each message in an SQS queue is processed by only one consumer.
+
+With SQS, messages are delivered through a long polling (pull) mechanism, while SNS uses a push mechanism to immediately deliver messages to subscribed endpoints.
+
+SNS is typically used for applications that need realtime notifications, while SQS is more suited for message processing use cases.
+
+SNS does not persist messages - it delivers them to subscribers that are present, and then deletes them. In comparison, SQS can persist messages (from 1 minute to 14 days).
 
 
 
