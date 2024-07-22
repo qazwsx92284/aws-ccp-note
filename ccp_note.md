@@ -167,5 +167,107 @@ LB gets traffic, it handle the traffic route it to specific instance. ASG increa
 - in hybrid cloud architecture(on-premises + cloud infrastructure), to allow on-premises to seamlessly use AWS Cloud
 - bridge between on-premise data and cloud data in S3
 
+# Databases
+- stroing data on disk(EFS, EBS, EC2 Instance Store, S3) can have its limits
+- many DB technologies could be run on EC2, but you must handle resiliency, backup, patching, high availability, fault tolerance, scaling... those could be done by AWS with its DB
+
+## AWS RDS 
+- Relational Database Service
+- managed DB for SQL
+- create below DBs in the cloud managed by AWS
+  1. postgres
+  2. MySql
+  3. MariaDB
+  4. Oracle
+  5. Microsoft sql server
+  6. Aurora(AWS proprietary database)
+
+### Aurora 
+- support PostgreSQL and MySql
+- more expensive than RDS, but more efficient
+
+### Aurora serverless
+- automated DB instantiation and auto-scaling based on actual usage
+
+## Athena
+- serverless query service to analyze data stored in **S3**
+- SQL
+
+### RDS Deployments
+1. Read Replicas: create read replica of main DB, data is only written in main DB
+2. Multi AZ: failover in case of AZ outage(high availability), data is only read/written to main DB
+3. Multi Region(Read replicas): create read replicas in other regions. read/writed only to the main DB. disater recovery, increase local performance for global read, replication cost
+
+### ElastiCache
+- fully managed in memory data store and cache service
+- get managed Redis or Memcached 
+
+## Dynamo DB
+- fully managed high available with replication across 3 AZ
+- NoSql DB
+- serverless
+
+### DynamoBD Accelerator (DAX)
+- fully manged in memory cache for DynamoDB
+- **DAX only for DynamoDB, while ElastiCache can be used for other DBs**
+
+### DynamoDB Global Tables
+- low latency in multi regions
+- Active-Active replication = read/write to any AWS Region
+
+## DocumentDB
+- same for MongoDB (NoSQL DB)
+- fully manged
+
+## Redshift
+- postgreSql
+- not for OLTP(online transaction processing), RDS is goot for OLTP
+- good for OLAP(online **analytical** processing), analytics and data warehousing
+- load data once every hour not every second
+- Columnar storage
+- Massively Parallel Query Execution (MPP), highly available
+- has SQL interface for performing quries
+- BI tools; Quicksight, Tableau
+
+### Redshift serverless
+- automatically provisions and scales data warehouse underlying capacity
+- use cases: reporting, dashboarding apps, real-time analytics
+
+## EMR
+- Elastic MapReduce
+- Hadoop (big data)
+- use case: data processing, machine learning
+
+## Neptune
+- fully managed graph DB
+- ex. SNS
+
+## QuickSight
+- serverless macine learning powered BI (business intelligence) service to create interactive dashboards
+- integrated with RDS, Aurora, Athena, Redshift, S3
+
+## Amazon Timestream
+- fully managed, fast, scalable, serverless time series DB
+
+## Amazon QLDB
+- Quantum Ledger DB
+- recording financial transactions
+- fully managed, serverless, high available, replication across 3 AZ
+- review history of all changes made to app data over time
+- Immutable system: no entry can be removed or modified, cryptographically verifiable
+- no decentralization component
+
+## Amazon Managed Blockchain
+- decentralization: multiple parties can execute transactions without the need for a trusted, central authority.
+- Ethereum, Hyperleger Fabric
+
+## AWS Glue
+- Managed extract, transform and load service (ETL)
+- fully serverless
+
+
+
+
+
 
 
