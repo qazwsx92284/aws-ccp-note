@@ -265,6 +265,128 @@ LB gets traffic, it handle the traffic route it to specific instance. ASG increa
 - Managed extract, transform and load service (ETL)
 - fully serverless
 
+# Docker
+- software development plaform to deploy apps
+- Apps run the same, regardless of where they're run
+
+## Amazon ECR (Elastic Container Registry)
+- private Docker registry = where Docker images are stored in private
+- This is wheere you store your Docker images so that they can be run by ECS or Fargate
+- Docker hub is where Docker images are soterd in public
+
+## ECS
+- Elastic Container Service
+- launch Docker containers on AWS
+- you must provision and maintain the infra(=EC2)
+- AWS do starting/stopping containers
+- integration with load balancer
+
+## Fargate
+- launch Docker containers on AWS
+- you do **not provision** the infra
+- serverless offering
+
+## AWS Lambda
+- virtual functions - no servers to manage
+- limited by time - short executions
+- run on-demand, **Event-Driven**
+- serverless = managed service
+- scaling is automated
+- easy pricing, payper requeat and compute time
+- use cases: serverless thumbnail creation, serverless CRON job
+
+## Lambda container image
+- must implement the Lambda Runtime API
+- ECS/Fargate is preferred for running arbutary Docker images
+
+# Amazon API Gateway
+- fully managed
+- serverless and scalable
+- supports RESTful APIs, WebSocket APIs
+
+# AWS batch
+- fully managed
+- at any scale
+- batch = job with a start and an end (opposed to continuous)
+- batch will dynamically launch EC2 or Spot Instances
+- batch jobs aree defined as Docker images and run on ECS
+
+# Amazon Lightsail
+- vitual servers, storage, DBs and networking
+- low and predictable pricing
+- great for people **with little cloud experience**
+- simpler alternative to using EC2,RDS,ELB...., can setup notification and monitoring
+- use cases: simple web apps, websites, dev/test environment
+- high availability but no auto scaling, limited AWS integrations
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
