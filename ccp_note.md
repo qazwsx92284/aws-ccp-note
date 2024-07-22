@@ -319,11 +319,123 @@ LB gets traffic, it handle the traffic route it to specific instance. ASG increa
 - use cases: simple web apps, websites, dev/test environment
 - high availability but no auto scaling, limited AWS integrations
 
+# CloudFormation
+- a declarative way of outlining your AWS, infra, for any resources 
+- ex. within a CloudFormation template, you say, you want a security group, EC2, S3, ELB... then CloudFormation creates them for you in the **right order** with the **exact config** that you specify in the template.
+- most of services are supported, you can use "custom resoources" for unsupported ones
+- Infrasture as code
+- can estimate the costs using CloudFormation template
+- automated generation of diagram for your template
+- ability to destory and re-create an infrasture on the cloud on the fly, ex. in dev, you could automation deletion of templates at 5pm and recreate at 8am safely
+- can leverage exisiting templates on the web or documentation
 
+## CloudFormation Stack Designer
+- can see all resources and relations between the components
 
+# AWS cloud development Kit (CDK)
+- Define your cloud infrastructure using familir coding language; js,ts,python,java and .net
+- the code is "compiled" into **CloudFormation template**(json/yaml)
+- so you can deploy infratructure and app runtime code together
+- great for Lambda functions and Docker containers in ECS/EKS
 
+# Elastic Beanstalk
+- service for deploying and scaling web apps and services.
+- developer simply upload your code and Elastic Beanstalk automatically handles the deployment including capacity provisioning, load balancing, auto scaling and health monitoring.
+- uses all components, if not supported, you can write your custom platform (advanced)
+- Platform as a Service (PaaS)
+- free but you have to pay for the undelying instances
 
+## Elastic beanstalk - Health Monitoring
+- Health agent pushes metric to **CloudWatch**
 
+# AWS CodeDeploy
+- deploy app automatically
+- work with EC2, On-premises servers, hybrid service
+- servers/instances must be provisioned and configured ahead of time with the CodeDeploy Agent
+- umm like Jenkins Deploy action?
+
+# AWS CodeCommit
+- git based code repository like GitHub
+
+# AWS CodeBuild
+- compiles source code, run tests, and produces packages that are ready to be deployed(by CodeDeploy for example)
+- umm like Jenkins promotion action?
+
+# AWS CodePipeline
+- orchestrate the different steps to have the code automatically pushed to production
+- code > build > test > provision > deploy
+- basis for CICD = continuous Integration & Continuous Delivery
+- fully managed, compatible with CodeCommit, CodeBuild, CodeDeploy, Elastic Beanstalk, CloudFormation, GitHub, 3rd party services....
+- fast delivery and rapid updates
+- diagram
+
+```
+CodePipeline : orchestration layer
+codeCommit > codeBuild > CodeDeploy > Elastic Beanstalk
+```
+
+# AWS CodeArtifact
+- storeing and retreving dependencies = artifact management
+- developers and CodeBuild can retrieve dependencies from CodeArtifact
+- umm like JFrog.. Nexus repository
+
+# AWS CodeStar
+- Unitied UI to easily manage software development activities in one place
+
+# Cloud 9
+- online cloud IDE
+
+# AWS System Manager (SSM)
+- helps you manage EC2 and On-premises: patching automation, run commands, configure servers
+- hybrid AWS service
+
+## SSM Session Manager
+- allow you to start a secure shell on your EC2 and on-premises servers
+- No SSH access, bastion hosts, oor SSH keys needed
+- No port 22 needed(better security)
+- send session log data to S3 or CloudWatch Logs
+
+## Systems Manager Parameter Store
+- secure storage for configs and secrets
+- serverless, scalable, durable, easy SDK
+- control access with IAM
+- version tracking and ecryption are optional
+- umm.. like hashi corp vault?
+
+# Global Applications in AWS
+1. Global DNS: Route 53
+2. Global Content Delivery Network(CDN): CloudFront
+3. S3 Transfer Acceleration
+4. AWS Global Accelerator
+
+## Route 53
+- mangaged DNS (Doman Name System)
+- great t oroute users to the closest deployment with least latency
+- great for disaster recovery strategies
+
+### Route 53 routing policies
+1. Simple routing policy
+   - No health checks
+2. Weighted routing policy
+3. Latency routing policy
+4. Failover routing policy
+   - Disaster recovery
+   - Health cehck on primary
+**except for simple routing policy, everything else has health checks**
+
+## AWS CloudFront
+- Content Delivery Netwok (CDN)
+- Improves read performance, content is cached at the edge
+- DDoS protection because worldwide
+- integration with Shield, AWS Web Application Firewall
+
+## S3 Transfer Acceleration
+- increase transfer speed by transferring file to AWS Edge Location which will forward the data to the S3 bucket in the target region
+
+## AWS Global Accelerator
+- improve global app availability and performance using AWS global network
+- leverage AWS internal (private ) network
+- 2 anycast IP are created and traffic is sent thru edge locations
 
 
 
