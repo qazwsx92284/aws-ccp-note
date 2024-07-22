@@ -102,7 +102,7 @@ LB gets traffic, it handle the traffic route it to specific instance. ASG increa
    8. software delivery
    9. **static website**
 
-# S3 buckets
+## S3 buckets
 - store objects(files) in buckets(directories)
 - must have globally unique name across all regions and all accounts
 - defined at region level
@@ -118,9 +118,54 @@ LB gets traffic, it handle the traffic route it to specific instance. ASG increa
    - bucket policies
    - object/bucket access control list(ACL)
 3. encryption
+   - server side encryption: default, server encrypts the file after receiving it
+   - client side encryption: encrypts the file(user) before uploading it
 
+## S3 versioning
+- enabled at the bucket level
+- same key overwrite whill change the version: 1,2,3...
+- best practice to version your bucekts
+- before enabling versioning will have version null
+- suspending versioning does not delete the previous versions
 
+## S3 Replication 
+- must enable versioning in source and destination buckets
+- Cross Region Replication (CRR)
+  - compliance, lower lanency access, replication across accounts
+- Same Region Replication (SRR)
+  - log aggregation, live replication between production and test accounts
+- buckets can be in different aws accounts
+- copying in async
+- must give proper IAM permissions to S3
 
+## S3 storage classes
+- Standard
+- standard Infrequent Access (IA)
+- One zone IA
+- Glacier instant retrieval
+- Glacier flexible retrieval
+- Glacier deep archive
+- Intelligent tiering
+- **can momve between classes manually or using S3 lifecycle configurations**
+
+## IAM Access Analyzer for S3
+- ensures that only intended people have access to S3
+- evaluate se bucket policies, ACLs, access point policies
+
+## Snow family
+- protable devices
+- for edge location
+- purpose:
+  1. data migration
+    - snowcone, snowball edge, snowmobile
+  2. edge computing
+    - snowcone, snowball edge
+- **snowcone provides both online and offline data migration methods and DataSync agent is pre-installed**
+- AWS OpsHub: to manage Snow Family Device, alternative way of previous CLI
+
+## AWS Storage Gateway
+- in hybrid cloud architecture(on-premises + cloud infrastructure), to allow on-premises to seamlessly use AWS Cloud
+- bridge between on-premise data and cloud data in S3
 
 
 
