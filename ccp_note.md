@@ -437,23 +437,99 @@ codeCommit > codeBuild > CodeDeploy > Elastic Beanstalk
 - leverage AWS internal (private ) network
 - 2 anycast IP are created and traffic is sent thru edge locations
 
+# Amazon SQS (Simple Queue Service)
+- fully managed service, serverless
+- used to decouple app
+- default retention of messages: 4days, max 14 days
+- messages are deleted after they're read by consumers
+- consumers share the work ot read messages and scale horizontally
+- FIFO Queue: messages are processed in order by the consumer
+
+# Amazon SNS
+- event publishers only sends message to one SNS topic
+- event subscribers listen to the SNS topic notifications
+- each subscriber to the topic will get all the messages
+
 ---
-AWS SNS vs SQS key feature differences
+
+## AWS SNS vs SQS key feature differences
 There are some key distinctions between SNS and SQS:
 
 SNS supports A2A and A2P communication, while SQS supports only A2A communication.
 
-SNS is a pub/sub system, while SQS is a queueing system. You'd typically use SNS to send the same message to multiple consumers via topics. In comparison, in most scenarios, each message in an SQS queue is processed by only one consumer.
+SNS is a pub/sub system, while SQS is a queueing system. You'd typically use **SNS** to send the same message **to multiple consumers via topics**. In comparison, in most scenarios, each message in an **SQS** queue is processed **by only one consumer**.
 
-With SQS, messages are delivered through a long polling (pull) mechanism, while SNS uses a push mechanism to immediately deliver messages to subscribed endpoints.
+With **SQS**, messages are delivered through **a long polling (pull) mechanism**, while **SNS** uses a **push mechanism** to immediately deliver messages to subscribed endpoints.
 
-SNS is typically used for applications that need realtime notifications, while SQS is more suited for message processing use cases.
+**SNS** is typically used for applications that need realtime **notifications**, while **SQS** is more suited for **message processing use cases**.
 
-SNS does not persist messages - it delivers them to subscribers that are present, and then deletes them. In comparison, SQS can persist messages (from 1 minute to 14 days).
+**SNS does not persist messages** - it delivers them to subscribers that are present, and then deletes them. In comparison, **SQS can persist messages (from 1 minute to 14 days).**
 
+---
 
+# Amazon Kinesis
+- real time big data streaming
+- managed service to collect, process, and analyze real-time streaming data at any scale
 
+## Kinesis Types (Not CCP scopes but good to know)
+1. kinesis data streams
+2. kinesis data firehose
+3. kinesis data anlytics
+4. kinesis video streams
 
+# Amazon MQ
+- managed message broker service for RabbitMQ and AciveMQ in the cloud (MQTT, AMQP.. protocols)
+- doesn't scale as much as SQS/SNS
+- runs on servers, can run in multi AZ with failover
+- has both queue feature (SQS) and topic features (SNS)
+
+# Amazon CloudWatch Metrics
+- CloudWatch provides metrics for **every** services in AWS
+
+## Amazon CloudWatch Alarms
+- trigger notifications for any metric
+- alarms actions: auto scaling, EC2 actions, SNS notifications
+- ex. create a billing alarm on CloudWatch Billing metric
+
+## Amazon CloudWatch Logs
+- can collect log from Elastic Beanstalk, ECS, Lambda, CloudTrail, CloudWatch log agents, Route53
+
+### CloudWatch Logs for EC2
+- by default, no logs from EC2 goes to CloudWatch
+- need to run CloudWatch agent on EC2 to push log files
+- CloudWatch log agent can be setup on-premises too
+
+## Amazon EventBridge (=CloudWatch Events) : serverless event bus that ingests data from your own apps, SaaS apps, and AWS services and routes that data to targets.
+- schedule: cron job
+- event pattern
+- trigger lambda functions, send SQS/SNS messages
+
+# AWS CloudTrail
+- provides governance, compliance and audit for you AWS account
+- enabled by default
+- get an **history of events/API calls** **made within account** by console SDK, SLI, AWS Services
+- trail can be appliced to All regions (default), or a single region
+- can put logs from CloudTrail into CloudWatch Logs or S3
+- **if resouces is deleted in AWS, investigate CloudTrail first...**
+
+## CloudTrail Insights
+- automated analysis of your CloudTrail Events
+
+# AWS X-Ray
+- AWS X-Ray helps you debug and analyze your microservices applications with request tracing so you can find the root cause of issues and performance
+
+# AWS CodeGuru
+- ML-powered service
+- automated code reviews and app performance recommendations
+- provides two functionailities
+  1. CodeGuru Reviewer: automated code reviews for static code analysis (development)
+  2. CodeGuru Profiler: visibility/recommendations about app performance during runtime(production)
+- coding: CodeGuru Reviewer. supports java, python. identify critical issue, vulnerabilities, bugs. umm like sonarqube
+- Build&Test, Deploy, Measure: CodeGuru Profiler
+
+# AWS Health Dashboard
+- Service Health Dashboard
+- Account health dashboard
 
 
 
