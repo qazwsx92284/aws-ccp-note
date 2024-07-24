@@ -240,7 +240,7 @@ LB gets traffic, it handle the traffic route it to specific instance. ASG increa
 
 ## Neptune
 - fully managed graph DB
-- ex. SNS
+- ex. social media
 
 ## QuickSight
 - serverless macine learning powered BI (business intelligence) service to create interactive dashboards
@@ -309,7 +309,7 @@ LB gets traffic, it handle the traffic route it to specific instance. ASG increa
 - at any scale
 - batch = job with a start and an end (opposed to continuous)
 - batch will dynamically launch EC2 or Spot Instances
-- batch jobs aree defined as Docker images and run on ECS
+- batch jobs are defined as Docker images and run on ECS
 
 # Amazon Lightsail
 - vitual servers, storage, DBs and networking
@@ -340,7 +340,7 @@ LB gets traffic, it handle the traffic route it to specific instance. ASG increa
 
 # Elastic Beanstalk
 - service for deploying and scaling web apps and services.
-- developer simply upload your code and Elastic Beanstalk automatically handles the deployment including capacity provisioning, load balancing, auto scaling and health monitoring.
+- developer simply upload code and Elastic Beanstalk automatically handles the deployment including capacity provisioning, load balancing, auto scaling and health monitoring.
 - uses all components, if not supported, you can write your custom platform (advanced)
 - Platform as a Service (PaaS)
 - free but you have to pay for the undelying instances
@@ -391,7 +391,7 @@ codeCommit > codeBuild > CodeDeploy > Elastic Beanstalk
 
 ## SSM Session Manager
 - allow you to start a secure shell on your EC2 and on-premises servers
-- No SSH access, bastion hosts, oor SSH keys needed
+- No SSH access, bastion hosts, or SSH keys needed
 - No port 22 needed(better security)
 - send session log data to S3 or CloudWatch Logs
 
@@ -410,7 +410,7 @@ codeCommit > codeBuild > CodeDeploy > Elastic Beanstalk
 
 ## Route 53
 - mangaged DNS (Doman Name System)
-- great t oroute users to the closest deployment with least latency
+- great to route users to the closest deployment with least latency
 - great for disaster recovery strategies
 
 ### Route 53 routing policies
@@ -516,14 +516,14 @@ With **SQS**, messages are delivered through **a long polling (pull) mechanism**
 - automated analysis of your CloudTrail Events
 
 # AWS X-Ray
-- AWS X-Ray helps you debug and analyze your microservices applications with request tracing so you can find the root cause of issues and performance
+- AWS X-Ray helps you **debug and analyze your microservices** applications with request tracing so you can find the root cause of issues and performance
 
 # AWS CodeGuru
-- ML-powered service
+- **ML-powered** service
 - automated code reviews and app performance recommendations
 - provides two functionailities
-  1. CodeGuru Reviewer: automated code reviews for static code analysis (development)
-  2. CodeGuru Profiler: visibility/recommendations about app performance during runtime(production)
+  1. CodeGuru Reviewer: **automated code reviews** for static code analysis (development)
+  2. CodeGuru Profiler: visibility/recommendations about app **performance** during **runtime**(production)
 - coding: CodeGuru Reviewer. supports java, python. identify critical issue, vulnerabilities, bugs. umm like sonarqube
 - Build&Test, Deploy, Measure: CodeGuru Profiler
 
@@ -531,9 +531,39 @@ With **SQS**, messages are delivered through **a long polling (pull) mechanism**
 - Service Health Dashboard
 - Account health dashboard
 
+# VPC
+- virtual private cloud
+- private network to deploy your resources(regional resource)
 
+# Subnets
+- to partition your netwok inside your VPC (AZ resource)
+- public subnet: accessible from the internet
+- private subnet: not accesible from the ineternet
+- to define access to the internet and between subnets, use Route Tables
 
+## VPN vs VPC
+- A VPN (virtual private network) creates a secure connection over the internet to protect data exchanges between a user and the network. A VPC (virtual private cloud), however, is a segment of a public cloud infrastructure that offers a private cloud environment.
 
+# Internet gateways
+- help VPC instances connect with internet
+- public subnets
+
+# NAT Gateways(aws-managed) & NAT instances(self managed)
+- allow instances in Private subets to access internet while remaining private
+
+# NACL (Network ACL)
+- firewall: control traffic from/to subnet
+- ALLOW and DENY rules
+- attached at subnet level
+- rule: only IP address
+- stateless: return traffic must be explicitly allowed by rules
+
+# Security Groups
+- freiwall: control traffic to/from an ENI/EC2 instance (what's ENI? Elastic Network Interface (ENI) is a virtual network interface that provides networking capabilities to Amazon EC2 instances)
+- only ALLOW rules
+- instance level
+- rules: IP address and other security groups
+- stateful: return traffic is automatically allowed, regardless of any rules
 
 
 
