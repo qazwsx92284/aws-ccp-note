@@ -442,7 +442,7 @@ codeCommit > codeBuild > CodeDeploy > Elastic Beanstalk
 - used to decouple app
 - default retention of messages: 4days, max 14 days
 - messages are deleted after they're read by consumers
-- consumers share the work ot read messages and scale horizontally
+- consumers share the work to read messages and scale horizontally
 - FIFO Queue: messages are processed in order by the consumer
 
 # Amazon SNS
@@ -565,10 +565,50 @@ With **SQS**, messages are delivered through **a long polling (pull) mechanism**
 - rules: IP address and other security groups
 - stateful: return traffic is automatically allowed, regardless of any rules
 
+# VPC Flow logs
+- Capture information about IP traffic oing into your interfaces
 
+# VPC Peering
+- Connect 2 VPC, privately using AWS's network
+- must not have overlapping CIDR (IP address range, Classless Inter-Domain Routing (CIDR) is an IP address allocation method that improves data routing efficiency on the internet.)
+- VPC Peering connection is not transitive(must be established for eash VPC that need to communicate with one another)
 
+# VPC Endpoint
+- to connect to AWS Service using a private network
+- enhanced security, lower latency to access AWS services
 
+## AWS PrivateLink (VPC endpoint services)
+- most secure and scalable way to expose a service to thousands of VPCs.
+- not require VPC peering, internet gateway, NAT, route tables...
+- require a network load balancer and ENI
 
+---
+
+# Site to Site VPN
+- connect an on-premises VPN to AWS
+- connection is automatically encrypted
+- goes over **public** internet
+- On-premises must use a **Customer Gatewawy (CGW)**
+- AWS must use a **Virtual Private Gateway (VGW)**
+
+# Direct Connect (DX) 
+- establish a **physical** connection between on-premises and AWS
+- connection is private, secure and fast
+- goes over a **private** network
+- takes at least a month to eastablish
+
+# AWS Client VPN
+- connect from your computure using **OpenVPN** to your private network(VPC) in **AWS** and **on-premises**
+- AWS Client VPN is a fully-managed remote access VPN solution used by your remote workforce to securely access resources within both AWS and your on-premises network. Fully elastic, it automatically scales up, or down, based on demand.
+- allow you to connect to your EC2 over private IP (just as if you were in the private VPC network)
+- goes over **public internet**
+
+---
+
+# Transit Gateway
+- connect thousand of VPC and on-premises networks together
+- hub-and-spoke (star) connection
+- works with Direct Connect Gateway, VPN connections
 
 
 
