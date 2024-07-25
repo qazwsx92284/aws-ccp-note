@@ -391,7 +391,7 @@ codeCommit > codeBuild > CodeDeploy > Elastic Beanstalk
 
 ## SSM Session Manager
 - allow you to start a secure shell on your EC2 and on-premises servers
-- No SSH access, bastion hosts, or SSH keys needed
+- No SSH access, bastion hosts, or SSH keys needed (A bastion host is a server used to manage access to an internal or private network from an external network - sometimes called a jump box or jump server. Because bastion hosts often sit on the Internet, they typically run a minimum amount of services in order to reduce their attack surface.)
 - No port 22 needed(better security)
 - send session log data to S3 or CloudWatch Logs
 
