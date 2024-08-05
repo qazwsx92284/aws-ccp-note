@@ -395,6 +395,14 @@ codeCommit > codeBuild > CodeDeploy > Elastic Beanstalk
 - No port 22 needed(better security)
 - send session log data to S3 or CloudWatch Logs
 
+### Class ports to know
+- 22 = SSH (secure sheel) - log into a Linux instance
+- 21 = FTP (File Transfer Protocol) - upload files into a file share
+- 22 = SFTP (Secure File Transfer Protocol) - uplaod file using SSH
+- 80 = HTTP - access unsecured websites
+- 443 = HTTPS - access secured websites
+- 3389 = RDP (Remote Desktop Protocol) - log into a Windows instance
+
 ## Systems Manager Parameter Store
 - secure storage for configs and secrets
 - serverless, scalable, durable, easy SDK
