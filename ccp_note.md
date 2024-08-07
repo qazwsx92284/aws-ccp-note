@@ -611,12 +611,84 @@ With **SQS**, messages are delivered through **a long polling (pull) mechanism**
 - allow you to connect to your EC2 over private IP (just as if you were in the private VPC network)
 - goes over **public internet**
 
----
-
 # Transit Gateway
 - connect thousand of VPC and on-premises networks together
 - hub-and-spoke (star) connection
 - works with Direct Connect Gateway, VPN connections
+
+---
+
+# What is a DDOS Attach?
+- Distributed Denial of Service
+- floods a server with traffic to overwhelm its infrastructure and disrupt network services.
+- force a website, computer, or online service offline. This is accomplished by flooding the target with many requests, consuming its capacity and rendering it unable to respond to legitimate requests.
+
+# DDOS protection on AWS
+- AWS Shield
+   - AWS Shield standard: free, protection from layer 3, 4 attacks
+   - AWS Shield Advanced: 24/7 premium DDoS protection, protect against more sophisticated attack on EC2, ELB, CloudFront, Global Accelerator, Route 53
+- AWS WAF (Web Application Firewall) : Filter specific requests based on rules
+   - protect from common web exploits
+   - layer 7 HTTP
+   - Deploy on ALB, API gateway, cloudfront
+   - define Web ACL
+      - rules: IP, HTTP headers, body, URI strings
+      - protects from common attacks such as SQL injection, Cross-site scripting (XSS)
+      - block countries
+      - rate-based rules for DDoS protection 
+- Using global edge network
+   - CloudFront
+   - Route53
+- AWS Auto Scaling: be ready to scale because DDoS attach is basically to spike the traffic and down the server by increasing number of requests.
+
+# AWS KMS (Key Management Service) 
+- AWS manages the **softtware** encryption keys for us
+- Encryption opt-in
+   - EBS
+   - S3: server-side encryption of objects
+   - Redshift
+   - RDS
+   - EFS
+- Encryption Auto enabled
+   - CloudTrail logs
+   - S3 Glacier
+   - Storage gateway
+ 
+# CloudHSM
+- AWS provisions encription **hardware**
+- AWS gives us the hardware(infra) but we manage our own encryption keys
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
